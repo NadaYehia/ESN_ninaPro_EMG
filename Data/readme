@@ -1,1 +1,3 @@
-
+I uploaded data for 4 subjects but I am only using the data from one subject in the code.
+Later the code can be extended to more than 1 subject. 
+Make sure that the data directory where you will download the data is the same as that you will enter in the second command of running this simulation.
