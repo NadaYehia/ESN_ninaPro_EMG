@@ -17,4 +17,10 @@ to run this code type the following in your Jupyter or Ipython console:
   esn=ESN(N,N_in,N_out,N_av,alpha,rho,gamma)
   
   - X=esn.ESN_response(S_tr)
+  
+  Here I am using learning rate, eta=0.0001
+                  number of epochs= 500000
+                  [feel free to tune these hyperparameters]
+                  *Further exploration of them is needed*
+  
   - esn.LR_from_response(S_tr,Y_tr,S_te,Y_te,500000,0.0001,50000,masktr,maskte)
