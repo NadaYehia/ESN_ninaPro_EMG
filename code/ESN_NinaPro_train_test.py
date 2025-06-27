@@ -144,7 +144,10 @@ class NinaPro:
 
     def findMaxSeqLen(self,emgFullData):
         self.maxL=0
+        # each movement sequence is followed by a rest sequence, therefore there are 120 rest sequences for 120 finger movements sequences
+        # this number can be calculated in the future; it does not need to be hardcoded.
         offset=120
+        
         #loop over the gestures sequences:120-240, 12 movements in E1 (without the rest/no finger movements sequences) x 10 repetitions (each movement)
         for mySeq in range(120):
             # find the biggest sequence length
