@@ -59,7 +59,7 @@ Steps:
 
 **initialize the ESN model and set its hyperparameters like, the number of reservoir neurons (N), number of input neurons (Nin), number of output neurons (Nout), and reservoir recurrency parameters (alpha and gamma), and the scaling factor for the reservoir matrix spectral radius to ensure echo state property(rho)** 
 
-4- N=200
+4- N=50
 
   N_in=10
   
