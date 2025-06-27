@@ -42,7 +42,7 @@ Steps:
 
 **Initialize the Ninapro class given the data path** 
 
-2- db=NinaPro('/DATABASE_dIRECTORY/DB_NinaPro_1')
+2- db=NinaPro('/DATABASE_dIRECTORY/unzipped_s1')
 
  **create the training and testing datasets**
  
