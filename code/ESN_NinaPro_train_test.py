@@ -17,6 +17,7 @@ import scipy.io
 import random
 import math
 import matplotlib.pyplot as plt
+import os 
 
 class Narma10:
     
@@ -150,7 +151,7 @@ class NinaPro:
         
         #loop over the gestures sequences:120-240, 12 movements in E1 (without the rest/no finger movements sequences) x 10 repetitions (each movement)
         for mySeq in range(120):
-            # find the biggest sequence length
+            #  find the biggest sequence length: sequence is made of actual finger movement sequence + a rest sequence
             myLen=len(emgFullData[offset+mySeq])
             padL=len(emgFullData[mySeq])
             
