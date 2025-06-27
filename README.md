@@ -52,8 +52,7 @@ Steps:
  
 3- S_tr,S_te,Y_tr,Y_te,masktr,maskte=db.load()
 
-**set hyperparameters like the number of reservoir neurons (N), number of input neurons (Nin), number of output neurons (Nout), and reservoir recurrency parameters (alpha and gamma), and the 
-scaling the reservoir matrix spectral radius to ensure echo state property(rho)** 
+**initialize the ESN model and set its hyperparameters like, the number of reservoir neurons (N), number of input neurons (Nin), number of output neurons (Nout), and reservoir recurrency parameters (alpha and gamma), and the scaling factor for the reservoir matrix spectral radius to ensure echo state property(rho)** 
 
 4- N=200
   N_in=10
@@ -64,10 +63,11 @@ scaling the reservoir matrix spectral radius to ensure echo state property(rho)*
   N_out=12
   esn=ESN(N,N_in,N_out,N_av,alpha,rho,gamma)
 
-  **calculate the reservoir dynamic resposnes**
+  **calculate the reservoir dynamic resposnes given the input training EMG sequences**
+  
   5- X=esn.ESN_response(S_tr)
 
-  **training the network model and set hyperparameters like learning rate (eta) and number of epochs (N epochs)**
+  **train the network model and set training hyperparameters like learning rate (eta) and number of epochs (N epochs)**
   
   Here I am using learning rate, eta=0.0001
                   number of epochs= 500000
