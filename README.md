@@ -28,22 +28,33 @@ our model piepline composes of 2 main classes:
    6- Split the torch tensor EMG and target labels data into training and testing sets: 70%-30%.  
 
   
-### B- Echo State Network (ESN) class:
-    1- ESN response:
-    2- LR from response: 
+### B- Echo State Network (ESN) class: this class handles initializing the ESN network, training and testing the model on the input data.
+    1- ESN response: this method ensure initializing the reservoir with the echo state property and calculate the dynamical responses of the reservoir neurons. 
+    2- LR from response: this method learns the correct output weights given the ESN responses output. It does so as follows: 
+       I- 
+       II- 
+       
 
 
 
 
  ## Run the code: 
   To run this code type the following in your Jupyter or Ipython console:
+Steps: 
 
-- runfile('/YOUR WORKING DIRECTORY/ESN_NinaPro_train_test.py', wdir=[YOUR WORKING DIRECTORY])
+1- runfile('/YOUR WORKING DIRECTORY/ESN_NinaPro_train_test.py', wdir=[YOUR WORKING DIRECTORY])
+** Initialize the Ninapro class given the data path** 
 
-- db=NinaPro('/DATABASE_dIRECTORY/DB_NinaPro_1')
+2- db=NinaPro('/DATABASE_dIRECTORY/DB_NinaPro_1')
 
-- S_tr,S_te,Y_tr,Y_te,masktr,maskte=db.load()
-- N=200
+ ** create the training and testing datasets**
+ 
+3- S_tr,S_te,Y_tr,Y_te,masktr,maskte=db.load()
+
+** set hyperparameters like the number of reservoir neurons (N), number of input neurons (Nin), number of output neurons (Nout), and reservoir recurrency parameters (alpha and gamma), and the 
+scaling the reservoir matrix spectral radius to ensure echo state property(rho)** 
+
+4- N=200
   N_in=10
   N_av=10
   alpha=0.9
@@ -51,12 +62,15 @@ our model piepline composes of 2 main classes:
   gamma=0.1
   N_out=12
   esn=ESN(N,N_in,N_out,N_av,alpha,rho,gamma)
-  
-  - X=esn.ESN_response(S_tr)
+
+  ** calculate the reservoir dynamic resposnes **
+  5- X=esn.ESN_response(S_tr)
+
+  ** training the network model and set hyperparameters like learning rate (eta) and number of epochs (N epochs)**
   
   Here I am using learning rate, eta=0.0001
                   number of epochs= 500000
                   [feel free to tune these hyperparameters]
                   *Further exploration of them is needed*
   
-  - esn.LR_from_response(S_tr,Y_tr,S_te,Y_te,500000,0.0001,50000,masktr,maskte)
+  6- esn.LR_from_response(S_tr,Y_tr,S_te,Y_te,500000,0.0001,50000,masktr,maskte)
