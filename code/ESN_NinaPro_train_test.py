@@ -171,18 +171,21 @@ class NinaPro:
         
         for mySeq in range(120):
             
-            #
+            # transpose each LxK sequence to K xL: no. features x Time steps
             self.sequence=emgFullData[self.offset+mySeq]
             self.sequence=np.transpose(np.array(self.sequence),[1,0])
-            
+
+            # transpose each LxK sequence to K xL: no. features x Time steps
             self.paddingRest=emgFullData[mySeq]
             self.paddingRest=np.transpose(np.array(self.paddingRest),[1,0])
             
-            #concetunate the rest and the sequence
+            #concatenate each finger movement sequence at the end with the rest padding
             self.FullSeq=np.concatenate((self.sequence,self.paddingRest),axis=1)
             self.nonEmptyL=self.FullSeq.shape[1]
             
             self.emgFullDataTensor[mySeq,:,0:self.nonEmptyL]=self.FullSeq
+
+            # a mask of 1s at the indices of the actual EMG signal and 0s at the 0 padding locations.
             self.maskPerSeq[mySeq,self.nonEmptyL:self.maxSeqL]=np.multiply(self.maskPerSeq[mySeq,self.nonEmptyL:self.maxSeqL],0)
             
         return self.emgFullDataTensor,self.maskPerSeq
