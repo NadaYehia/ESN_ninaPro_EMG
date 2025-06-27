@@ -191,14 +191,19 @@ class NinaPro:
         return self.emgFullDataTensor,self.maskPerSeq
 
     def split_train_test(self, emgFullDataTensor,target,mask): 
-    
+        # now we have the data in a standard pytorch tensor of size:
+        # N sequences (120 finger movements with their repetitions) x K (10 electrodes) x T (sequence time length)
+        
         T= emgFullDataTensor.size(dim=2)
         self.reps=10
+        
+        # split the data into 70% training, 30% testing. 
+        # allocate empty tensors for the training signals, test signals, their masks (padding..not padding)
+        # and their corresponding target finger movement type (1-12)
         self.S_tr= torch.empty((round(120*0.7),10,T))
         self.S_te=torch.empty((round(120*0.3),10,T))
         self.maskTr=torch.empty((round(120*0.7),T))
         self.maskTe=torch.empty((round(120*0.3),T))
-        
         self.Y_tr=torch.empty(round(120*0.7))
         self.Y_te=torch.empty(round(120*0.3))
         
