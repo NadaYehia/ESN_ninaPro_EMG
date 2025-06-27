@@ -39,19 +39,20 @@ our model piepline composes of 2 main classes:
 
 
  ## Run the code: 
-  To run this code type the following in your Jupyter or Ipython console:
+To run this code type the following in your Jupyter or Ipython console:
 Steps: 
 
 1- runfile('/YOUR WORKING DIRECTORY/ESN_NinaPro_train_test.py', wdir=[YOUR WORKING DIRECTORY])
-** Initialize the Ninapro class given the data path** 
+
+**Initialize the Ninapro class given the data path** 
 
 2- db=NinaPro('/DATABASE_dIRECTORY/DB_NinaPro_1')
 
- ** create the training and testing datasets**
+ **create the training and testing datasets**
  
 3- S_tr,S_te,Y_tr,Y_te,masktr,maskte=db.load()
 
-** set hyperparameters like the number of reservoir neurons (N), number of input neurons (Nin), number of output neurons (Nout), and reservoir recurrency parameters (alpha and gamma), and the 
+**set hyperparameters like the number of reservoir neurons (N), number of input neurons (Nin), number of output neurons (Nout), and reservoir recurrency parameters (alpha and gamma), and the 
 scaling the reservoir matrix spectral radius to ensure echo state property(rho)** 
 
 4- N=200
@@ -63,10 +64,10 @@ scaling the reservoir matrix spectral radius to ensure echo state property(rho)*
   N_out=12
   esn=ESN(N,N_in,N_out,N_av,alpha,rho,gamma)
 
-  ** calculate the reservoir dynamic resposnes **
+  **calculate the reservoir dynamic resposnes**
   5- X=esn.ESN_response(S_tr)
 
-  ** training the network model and set hyperparameters like learning rate (eta) and number of epochs (N epochs)**
+  **training the network model and set hyperparameters like learning rate (eta) and number of epochs (N epochs)**
   
   Here I am using learning rate, eta=0.0001
                   number of epochs= 500000
