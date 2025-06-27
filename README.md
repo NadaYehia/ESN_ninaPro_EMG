@@ -17,13 +17,13 @@ our model piepline composes of 2 main classes:
 
 1- Loading the subject and exercise EMG sequence data from the dataset directory on path.
    
-2- For each finger move (including rest/no motion), concatenate consecutive time steps of the same finger move (target lable) into a single EMG instance: **Nseq x F (10 electrodes)**.
+2- For each finger move (including rest/no motion), concatenate consecutive time steps of the same finger move (target lable) into a single EMG instance: **L time sequence x K (10 electrodes)**.
    
 3- Find the maximum sequence length in all EMG finger moves and pad the shorter sequences with EMG samples taken from the next rest/no finger movement sequence.
    
 4- Create a mask to keep track of true EMG data and the padded parts, to ignore the padding sequence when training the ESN model.
    
-5- Transform the EMG data arrays of the same length after padding into pytorch tensor: **N batch x L seq x K features**.
+5- Transform the EMG data arrays of the same length after padding into pytorch tensor: **N batch x K features x L time sequence**.
    
 6- Split the torch tensor EMG and target labels data into training and testing sets: 70%-30%.  
 
