@@ -342,10 +342,6 @@ class ESN(nn.Module):
             target=target[ (masktr[:,ind_t]>0)]
             
             target=(target-1).long()
-            #maskrepeated=masktr[:,ind_t].unsqueeze(1)
-            #maskrepeated=maskrepeated.expand(masktr.shape[0],12)
-            #print(maskrepeated)
-            #y=torch.mul(y,maskrepeated)
             
             y=y[masktr[:,ind_t]>0,:]
             
@@ -463,71 +459,4 @@ class ESN(nn.Module):
         loss= self.nlTe(pred,target,maskte)
         return loss    
          
-       
-        
-class Adam:
-
-    def __init__(self, Params):
-        
-        N_dim=np.shape(Params.shape)[0] # It finds out if the parameters given are in a vector (N_dim=1) or a matrix (N_dim=2)
-        
-        # INITIALISATION OF THE MOMENTUMS
-        if N_dim==1:
-               
-            self.N1=Params.shape[0]
-            
-            self.mt=torch.zeros([self.N1])
-            self.vt=torch.zeros([self.N1])
-        
-        if N_dim==2:
-            
-            self.N1=Params.shape[0]
-            self.N2=Params.shape[1]
-        
-            self.mt=torch.zeros([self.N1,self.N2])
-            self.vt=torch.zeros([self.N1,self.N2])
-        
-        # HYPERPARAMETERS OF ADAM
-        self.beta1=0.9
-        self.beta2=0.999
-        
-        self.epsilon=10**(-8)
-        
-        # COUNTER OF THE TRAINING PROCESS
-        self.counter=0
-        
-        
-    def Compute(self,Grads):
-        
-        # Compute the Adam updates by following the scheme above (beginning of the notebook)
-        
-        self.counter=self.counter+1
-        
-        self.mt=self.beta1*self.mt+(1-self.beta1)*Grads
-        
-        self.vt=self.beta2*self.vt+(1-self.beta2)*Grads**2
-        
-        mt_n=self.mt/(1-self.beta1**self.counter)
-        vt_n=self.vt/(1-self.beta2**self.counter)
-        
-        New_grads=mt_n/(torch.sqrt(vt_n)+self.epsilon)
-        
-        return New_grads
-        
-        
-        
-           
-                
-         
-        
-       
-
-        
-
-    
-    
-    
-    
-    
-                   
-    
+     
