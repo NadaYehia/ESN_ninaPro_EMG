@@ -145,7 +145,7 @@ class NinaPro:
     def findMaxSeqLen(self,emgFullData):
         self.maxL=0
         offset=120
-        #loop over the gestures sequences:120-240, 12 movements in E1 (without the rest consequences) x 10 repetitions (each movement)
+        #loop over the gestures sequences:120-240, 12 movements in E1 (without the rest/no finger movements sequences) x 10 repetitions (each movement)
         for mySeq in range(120):
             # find the biggest sequence length
             myLen=len(emgFullData[offset+mySeq])
