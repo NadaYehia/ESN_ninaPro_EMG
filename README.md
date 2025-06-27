@@ -32,7 +32,7 @@ our model piepline composes of 2 main classes:
 
 1- ESN response: this method ensure initializing the reservoir with the echo state property and calculate the dynamical responses of the reservoir neurons. 
     
-2- LR from response: this method learns the correct output weights given the ESN responses output. It does so as follows:
+2- LR from response: this method learns the correct output weights given the ESN responses output. It does so by computing the loss between predicted and the correct class type of the input EMG time signal sample, and back propagates this error to change the network output weights and biases **Ws,bs**.   
 
  ## Run the code: 
 To run this code type the following in your Jupyter or Ipython console:
