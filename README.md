@@ -43,10 +43,14 @@ Steps:
 **Initialize the Ninapro class given the data path, data_dir is the path for the Data folder in this repo on your computer. 
   s1.zip is the dataset for one subject in different 3 finger movements exercises** 
   
-2a- python 
+2a- python
+
     import zipfile
+    
     with zipfile.ZipFile(data_dir +'s1.zip', 'r') as zip_ref:
+    
               zip_ref.extractall(data_dir+'unzipped_s1')
+              
 2b- db=NinaPro(data_dir+'unzipped_s1')
 
  **create the training and testing datasets**
