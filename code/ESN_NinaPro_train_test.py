@@ -19,39 +19,9 @@ import math
 import matplotlib.pyplot as plt
 import os 
 
-class Narma10:
-    
-    def __init__(self,T):
-        
-        self.T=T
-        self.start=50
-        
-        
-    def Compute(self):
-    
-            
-        s=0.5*torch.rand([self.T+self.start])
-        y=torch.zeros([self.T+self.start])
-        
-        alpha=0.3
-        beta=0.05
-        gamma=1.5
-        delta=0.1
-        
-        for t in range(10,self.T+self.start):
-            
-            y[t]=alpha*y[t-1]+beta*y[t-1]*torch.sum(y[t-10:t])+gamma*s[t-10]*s[t-1]+delta
-            
-        
-        s=s[self.start:]
-        y=y[self.start:]
-                
-            
-        return s,y
-    
- # this class will contain the data from ninapro web.
- # for Exercise 1 (as a start)
- # target classes are : 0- 12 (4 fingers felxions and extenstions) + thumb 3 motions + 12 (no motion)
+# This class will contain the data from ninapro web.
+# for Exercise 1 (as a start)
+# target classes are : 0- 12 (4 fingers felxions and extenstions) + thumb 3 motions + 12 (no motion)
  
 class NinaPro:
     def __init__(self,DataPath):
