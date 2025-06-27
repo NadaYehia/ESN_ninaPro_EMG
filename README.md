@@ -41,7 +41,7 @@ Steps:
 1- runfile('/YOUR WORKING DIRECTORY/ESN_NinaPro_train_test.py', wdir=[YOUR WORKING DIRECTORY])
 
 **Initialize the Ninapro class given the data path, data_dir is the path for the Data folder in this repo on your computer. 
-  s1.zip is the dataset for one subject in different 3 finger movements exercises** 
+  s1.zip is the dataset for one subject in different 3 sets of finger movements exercises (E1,E2,E3): 52 different movements in total** 
   
 2a- python
 
