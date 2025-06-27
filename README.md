@@ -14,12 +14,12 @@ We implemented an Echo State Network model (ESN) to train on classifying input E
 our model piepline composes of 2 main classes:
 
 1- **NinaPro class**: this class handles the loading of the data and preparing it into a standard Pytorch tensor form to input to the ESN network. It consists of 3 main steps:
-   - # 1- Loading the subject and exercise EMG sequence data from the dataset directory on path.
-   - # 2- For each finger move (including rest/no motion), concatenate consecutive time steps of the same finger move (target lable) into a single EMG instance: Nseq x F (10 electrodes).
-   - # 3- Find the maximum sequence length in all EMG finger moves and pad the shorter sequences with EMG samples taken from the next rest/no finger movement sequence.
-   - # 4- Create a mask to keep track of true EMG data and the padded parts, to ignore the padding sequence when training the ESN model.
-   - # 5- Transform the EMG data arrays of the same length after padding into pytorch tensor: N batch x L seq x K features
-   - # 6- Split the torch tensor EMG and target labels data into training and testing sets: 70%-30%.  
+   - ### 1- Loading the subject and exercise EMG sequence data from the dataset directory on path.
+   - ### 2- For each finger move (including rest/no motion), concatenate consecutive time steps of the same finger move (target lable) into a single EMG instance: Nseq x F (10 electrodes).
+   - ### 3- Find the maximum sequence length in all EMG finger moves and pad the shorter sequences with EMG samples taken from the next rest/no finger movement sequence.
+   - ### 4- Create a mask to keep track of true EMG data and the padded parts, to ignore the padding sequence when training the ESN model.
+   - ### 5- Transform the EMG data arrays of the same length after padding into pytorch tensor: N batch x L seq x K features
+   - ### 6- Split the torch tensor EMG and target labels data into training and testing sets: 70%-30%.  
 
   
 2- **Echo State Network (ESN) class**:
