@@ -192,7 +192,7 @@ class NinaPro:
 
     def split_train_test(self, emgFullDataTensor,target,mask): 
         # now we have the data in a standard pytorch tensor of size:
-        # N sequences (120 finger movements with their repetitions) x K (10 electrodes) x T (sequence time length)
+        # N sequences (120 - 12 finger movements x 10 repetitions each) x K (10 electrodes) x T (sequence time length)
         
         T= emgFullDataTensor.size(dim=2)
         self.reps=10
