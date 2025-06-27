@@ -29,14 +29,14 @@ our model piepline composes of 2 main classes:
 
   
 ### B- Echo State Network (ESN) class:
-    - ESN response:
-    - LR from response: 
+    1- ESN response:
+    2- LR from response: 
 
 
 
 
  ## Run the code: 
-  Run this code type the following in your Jupyter or Ipython console:
+  To run this code type the following in your Jupyter or Ipython console:
 
 - runfile('/YOUR WORKING DIRECTORY/ESN_NinaPro_train_test.py', wdir=[YOUR WORKING DIRECTORY])
 
