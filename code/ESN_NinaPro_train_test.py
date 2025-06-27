@@ -69,7 +69,7 @@ class NinaPro:
         
     def load(self):   
         for j in range(1):
-            SubjectjE1='/s'+str(j+1)+'/S'+str(j+1)+'_A1_E1.mat'
+            SubjectjE1='/S'+str(j+1)+'_A1_E1.mat'
             self.DataSubjects = scipy.io.loadmat(self.DataPath+SubjectjE1)
             
             # load the restimulus array: target movements classes
@@ -102,9 +102,7 @@ class NinaPro:
         
         TrainingSize=math.floor(0.7*self.targetSub.shape[0])
         TestingSize= math.floor(0.3*self.targetSub.shape[0])
-        
-        # how to get the size of the time samples dimension before re-ordering sequences??
-        
+                
         self.emgSubTrain=[]
         self.targetSubTrain=[]
         
@@ -147,7 +145,7 @@ class NinaPro:
     def findMaxSeqLen(self,emgFullData):
         self.maxL=0
         offset=120
-        #loop over the gestures sequences:120-240
+        #loop over the gestures sequences:120-240, 12 movements in E1 (without the rest consequences) x 10 repetitions (each movement)
         for mySeq in range(120):
             # find the biggest sequence length
             myLen=len(emgFullData[offset+mySeq])
