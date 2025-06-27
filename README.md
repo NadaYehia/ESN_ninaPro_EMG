@@ -60,12 +60,19 @@ Steps:
 **initialize the ESN model and set its hyperparameters like, the number of reservoir neurons (N), number of input neurons (Nin), number of output neurons (Nout), and reservoir recurrency parameters (alpha and gamma), and the scaling factor for the reservoir matrix spectral radius to ensure echo state property(rho)** 
 
 4- N=200
+
   N_in=10
+  
   N_av=10
+  
   alpha=0.9
+  
   rho=0.99
+  
   gamma=0.1
+  
   N_out=12
+  
   esn=ESN(N,N_in,N_out,N_av,alpha,rho,gamma)
 
   **calculate the reservoir dynamic resposnes given the input training EMG sequences**
