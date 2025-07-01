@@ -89,6 +89,7 @@ Steps:
   6-test_acc,training_acc,training_losses=esn.LR_from_response(S_tr,Y_tr,S_te,Y_te,500000,0.00001,50000,masktr,maskte)
   
   **plot subsampled training loss signal (here every 50k trials)** 
+  
   7- 
    import matplotlib.pyplot as plt
 
