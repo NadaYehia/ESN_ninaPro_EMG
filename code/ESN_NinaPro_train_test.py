@@ -307,8 +307,6 @@ class ESN(nn.Module):
             
             #seq
             target=Y_tr[:,ind_t]
-            #print((masktr[:,ind_t]>0).long())
-            #remove the invalid sequences from the learning: using the mask
             target=target[ (masktr[:,ind_t]>0)]
             
             target=(target-1).long()
@@ -369,12 +367,11 @@ class ESN(nn.Module):
     def softmax(self,x): return x.exp() / (x.exp().sum(-1)).unsqueeze(-1)
     
     def nl(self,input, target): 
-        #print(target)
         lo=-input[range(target.shape[0]), target].log().mean()
         return lo
     
     def nlTe(self,input, target,maskte): 
-        print(input)
+        
         target=(target-1).long()
         # this is a tesnor of 0-35
         seqDim=torch.tensor(range(target.shape[0]))
@@ -389,12 +386,9 @@ class ESN(nn.Module):
         timDim=torch.tensor(range(target.shape[1]))
         timDim=torch.flatten(timDim.repeat(1,target.shape[0]))
         lo=input[seqDim, torch.flatten(target),timDim]
-        #print(input[0,:,0])
-        #print(target[0,0])
-        #print(lo[0])
+        
         lo=torch.mul(lo,torch.flatten(maskte))
         lo=lo[lo>0]
-        #lo=lo[lo[lo>0].long()]
         lo=-lo.log().mean()
         return lo    
     
@@ -402,15 +396,12 @@ class ESN(nn.Module):
     def myLoss(self,y,target):
         
         pred=self.softmax(y)
-        #print(pred[0,:])
         loss= self.nl(pred,target)
         return loss
     
     def myLossTe(self,y,target,maskte):
         
         pred=self.softmax(y)
-        
-        print(pred[0,:,1])
         loss= self.nlTe(pred,target,maskte)
         return loss    
          
