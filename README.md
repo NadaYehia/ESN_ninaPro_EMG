@@ -119,7 +119,7 @@ test_acc,training_acc,training_losses=esn.LR_from_response(S_tr,Y_tr,S_te,Y_te,N
 ## plot subsampled training losses curve, every 10k trials ( you could pick other numbers)
 import matplotlib.pyplot as plt
 subsamples=10000
-n_trials=Nbatches/subsamples
+n_trials=Nbatches//subsamples
 sliced_array=training_losses[::subsamples].tolist()
 plt.plot(range(0,n_trials),sliced_array)
 plt.xlabel("Training Batch")
