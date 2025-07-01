@@ -107,7 +107,7 @@ X=esn.ESN_response(S_tr)
 
 ```python
 ## train the model for 500k trials and print the training and testing losses every 50k trials.
-## print the final model accuracies.
+## print the final model's training and test accuracies.
 Nbatches=500000  # total number of training trials
 Ncheck=50000 # print losses values every Ncheck trials
 eta=0.00001 # model learning rate
