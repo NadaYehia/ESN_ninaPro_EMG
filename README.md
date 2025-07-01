@@ -38,7 +38,7 @@ Our model piepline composes of 2 main classes:
  
 A- Clone and unzip the repoistory.
 
-B- Run Jupyter notebook from the repository directory path on your machine: '/LOCAL_REPOSITORY_DIRECTORY/ESN_ninaPro_EMG-main/ESN_ninaPro_EMG-main/code.
+B- Run Jupyter notebook from the repository directory path on your machine: '\LOCAL_REPOSITORY_DIRECTORY\ESN_ninaPro_EMG-main\ESN_ninaPro_EMG-main\code.
 
 C-Run the following cells in Jupyter notebook
 
@@ -88,37 +88,40 @@ S_tr,S_te,Y_tr,Y_te,masktr,maskte=db.load()
 
 
 ```python
-N=200
-N_in=10 
-N_av=50 
-alpha=0.99 
-rho=1.5 
-gamma=1 
-N_out=12 
+N=200      # no. of reservoir neurons
+N_in=10    #no. of input signal dimensions (10 electrodes)
+N_av=50    # parameter for determining the sparsity of the recurrent connections between the reservoir neurons
+alpha=0.99 # weighing of the current input signal and reservoir excitations relative to the previous reservoir neurons' states in updating the current
+           # reservoir neurons' states. 
+rho=1.5 # spectral radius scale of the reservoir recurrent matrix
+gamma=1 # scaling parameters for the input matrix weights
+N_out=12 # no. of output neurons (12 finger movements)
+
+## initialize the ESN model with the hyperparameters chosen above
 esn=ESN_NinaPro_train_test.ESN(N,N_in,N_out,N_av,alpha,rho,gamma)
 
+## compute the reservoir excitations given the input training EMG signals. 
 X=esn.ESN_response(S_tr)
 ```
 
 
 ```python
-test_acc,training_acc,training_losses=esn.LR_from_response(S_tr,Y_tr,S_te,Y_te,500000,0.00001,50000,masktr,maskte)
+## train the model for 500k trials and print the training and testing losses every 50k trials.
+## print the final model accuracies.
+Nbatches=500000  # total number of training trials
+Ncheck=50000 # print losses values every Ncheck trials
+eta=0.00001 # model learning rate
+test_acc,training_acc,training_losses=esn.LR_from_response(S_tr,Y_tr,S_te,Y_te,Nbatches,eta,Ncheck,masktr,maskte)
 ```
 
 
 ```python
-print(len(training_losses))  # Check total size
-#print((training_losses[::10000]))  # Check sampled size
-print(np.any(np.isnan(training_losses)))  # Check for NaN values
-print(np.any(np.isinf(training_losses)))  # Check for infinite values
-```
-
-
-```python
+## plot subsampled training losses curve, every 10k trials ( you could pick other numbers)
 import matplotlib.pyplot as plt
-
-sliced_array=training_losses[::10000].tolist()
-plt.plot(range(0,50),sliced_array)
+subsamples=10000
+n_trials=Nbatches/subsamples
+sliced_array=training_losses[::subsamples].tolist()
+plt.plot(range(0,n_trials),sliced_array)
 plt.xlabel("Training Batch")
 plt.ylabel("Loss")
 plt.title("Training Loss Over Batches")
