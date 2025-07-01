@@ -294,9 +294,9 @@ class ESN(nn.Module):
         X_tr=self.ESN_response(S_tr)
         X_te=self.ESN_response(S_te)
         
-        #print(X_te.shape)
         self.opt=optim.Adam(self.Ws+self.bs, lr=eta)
-        
+        training_losses=np.empty((N_batch,1))
+     
         # number of training times
         for n in range(N_batch):
             
@@ -314,29 +314,14 @@ class ESN(nn.Module):
             target=(target-1).long()
             
             y=y[masktr[:,ind_t]>0,:]
-            
-            #print(y)
-            
-            #print(y.shape)
-            #print(target)
-                    
-            # the loss function will be CE: cross entropy
-            # y = (minibatch, C)
-            # target=(minibatch)
-            
-            #loss = nn.CrossEntropyLoss()
-            #outputL=loss(y,target)
-            
+           
             outputL=self.myLoss(y,target)
             outputL.backward()
-            
-            
-            #mse=torch.mean((target-y)**2)
-            #mse.backward()
             
             self.opt.step()
             self.opt.zero_grad()
             
+            training_losses[n]=outputL.item()
             if n%N_check==0:
                 
                 myLoss=self.Test(X_te,Y_te,maskte)
@@ -348,7 +333,7 @@ class ESN(nn.Module):
         
         print('testing Accuracy:', testingAcc)#
         print('training Accuracy:', trainingAcc)
-               
+        return testingAcc,trainingAcc,training_losses       
             
     def Test(self,X_te,Y_te,maskte):
         
