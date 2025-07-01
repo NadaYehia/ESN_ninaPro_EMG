@@ -18,6 +18,7 @@ import ESN_NinaPro_train_test
 
 
 ```python
+## change 'C:/Users/abdelrahmann/Downloads/' to the path of the repository on your machine
 data_dir='C:/Users/abdelrahmann/Downloads/ESN_ninaPro_EMG-main/ESN_ninaPro_EMG-main/Data/'
 ```
 
