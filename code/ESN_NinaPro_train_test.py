@@ -325,7 +325,7 @@ class ESN(nn.Module):
             if n%N_check==0:
                 
                 myLoss=self.Test(X_te,Y_te,maskte)
-                
+                print('iteration',n,'training loss:',training_losses[n])
                 print('Iteration', n, 'loss: ', myLoss)
                 
         testingAcc= self.Accuracy(X_te, Y_te, maskte)
