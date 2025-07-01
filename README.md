@@ -10,7 +10,7 @@ Given the current stage of this project and the time constraint, we trained and 
  
  
  ## Recurrent neural network model: 
-We implemented an Echo State Network model [Jaeger, 2001;Jaeger and Hass,2004] (ESN) to train on classifying input EMG time signals into 12 movements classes. ESN networks is a type of reservoir computing where the reservoir recurrent connections are initialized randomly and stay fixed throughout training, learning happens only in the output layer weights which connect the reservoir neurons **N** to the output class neurons (12 in our model) **Nout**.
+We implemented an Echo State Network model **[Jaeger (2001);Jaeger and Hass (2004)]** (ESN) to train on classifying input EMG time signals into 12 movements classes. ESN networks is a type of reservoir computing where the reservoir recurrent connections are initialized randomly and stay fixed throughout training, learning happens only in the output layer weights which connect the reservoir neurons **N** to the output class neurons (12 in our model) **Nout**.
 our model piepline composes of 2 main classes:
 
 ### A- NinaPro class: this class handles the loading of the data and preparing it into a standard Pytorch tensor form to input to the ESN network. It consists of 6 main steps:
