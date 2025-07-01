@@ -1,7 +1,6 @@
 # ESN_ninaPro_EMG
 
-This project was done at the University of sheffield in collaboration with University of Zurich and ActiveAI funding project [May 2022 - August 2022]. This codebase presents preliminary results
-on classifying forearm and fingers' Electromyography (EMG) signals taken in intact subjects into distinct 12 finger movements; towards implementing a light-weight neural network model 
+This project was done at the University of sheffield in collaboration with University of Zurich and ActiveAI funding project **[May 2022 - August 2022]**. This codebase presents preliminary results on classifying forearm and fingers' Electromyography (EMG) signals taken in intact subjects into distinct 12 finger movements; towards implementing a light-weight neural network model 
 on a neuromorphic system to control a bionic hand. 
 
  ## Dataset: 
@@ -94,9 +93,15 @@ Steps:
    import matplotlib.pyplot as plt
 
    sliced_array=training_losses[::50000].tolist()
+   
    plt.plot(range(0,10),sliced_array)
+   
    plt.xlabel("Training Batch")
+   
    plt.ylabel("Loss")
+   
    plt.title("Training Loss Over Batches")
+   
    plt.grid(True)
+   
    plt.show()
