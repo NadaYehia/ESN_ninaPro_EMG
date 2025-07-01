@@ -37,5 +37,6 @@ Our model piepline composes of 2 main classes:
  ## Run the code: 
 To run this code, clone the repoistory and run the following in jupyter notebook:
 
+[Link Text](main.md)
 
 
