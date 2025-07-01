@@ -67,7 +67,7 @@ Steps:
   
   alpha=0.9
   
-  rho=0.99
+  rho=0.99 
   
   gamma=0.1
   
@@ -86,4 +86,16 @@ Steps:
                   [feel free to tune these hyperparameters]
                   *Further exploration of them is needed*
   
-  6- esn.LR_from_response(S_tr,Y_tr,S_te,Y_te,500000,0.0001,50000,masktr,maskte)
+  6-test_acc,training_acc,training_losses=esn.LR_from_response(S_tr,Y_tr,S_te,Y_te,500000,0.00001,50000,masktr,maskte)
+  
+  **plot subsampled training loss signal (here every 50k trials)** 
+  7- 
+   import matplotlib.pyplot as plt
+
+   sliced_array=training_losses[::50000].tolist()
+   plt.plot(range(0,10),sliced_array)
+   plt.xlabel("Training Batch")
+   plt.ylabel("Loss")
+   plt.title("Training Loss Over Batches")
+   plt.grid(True)
+   plt.show()
