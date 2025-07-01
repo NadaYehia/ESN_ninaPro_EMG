@@ -93,7 +93,7 @@ N_in=10    #no. of input signal dimensions (10 electrodes)
 N_av=50    # parameter for determining the sparsity of the recurrent connections between the reservoir neurons
 alpha=0.99 # weighing of the current input signal and reservoir excitations relative to the previous reservoir neurons' states in updating the current
            # reservoir neurons' states. 
-rho=0.95 # spectral radius scale of the reservoir recurrent matrix
+rho=0.95 # spectral radius scale of the reservoir recurrent connectivity matrix
 gamma=1 # scaling parameters for the input matrix weights
 N_out=12 # no. of output neurons (12 finger movements)
 
