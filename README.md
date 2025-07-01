@@ -35,6 +35,7 @@ Our model piepline composes of 2 main classes:
 2- LR from response: this method learns the correct output weights given the ESN responses output. It does so by computing the loss between predicted and the correct class type of the input EMG time signal sample, and back propagates this error to change the network output weights and biases **Ws,bs**.   
 
  ## Run the code: 
-To run this code, run the following in jupyter notebook:
+To run this code, clone the repoistory and run the following in jupyter notebook:
+
 
 
