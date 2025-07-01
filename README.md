@@ -38,9 +38,9 @@ Our model piepline composes of 2 main classes:
  
 A- Clone and unzip the repoistory.
 
-B- run Jupyter notebook from the repository directory on your machine as: '/LOCAL_REPOSITORY_DIRECTORY/ESN_ninaPro_EMG-main/ESN_ninaPro_EMG-main/code.
+B- Run Jupyter notebook from the repository directory path on your machine: '/LOCAL_REPOSITORY_DIRECTORY/ESN_ninaPro_EMG-main/ESN_ninaPro_EMG-main/code.
 
-C-run the following cells in Jupyter notebook
+C-Run the following cells in Jupyter notebook
 
 ```python
 ## this code will import the data from EMG signals E1
