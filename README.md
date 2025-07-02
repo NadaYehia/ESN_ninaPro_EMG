@@ -128,6 +128,8 @@ plt.title("Training Loss Over Batches")
 plt.grid(True)
 plt.show()
 ```
-
+## Future work:
+Further analysis for the parameters governing the ESN architecture, e.g. input weight matrix scaling, optimal spectral radius and ESN forgetting term. 
+Further examination of the signals' distribution is required to determine any neccessary feature engineering techniques (e.g. selecting the electrodes with the most informative signal) or to pre-process the input EMG signals before feeding into the ESN.
 
 
